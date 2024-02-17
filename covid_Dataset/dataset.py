@@ -54,8 +54,9 @@ plt.pie(country_totals, labels=country_totals.index, autopct='%1.1f%%', startang
 
 plt.figure(figsize=(10,10))
 plt.pie(country_totals, labels=country_totals.index, autopct='%1.1f%%', startangle=140, colors=plt.cm.Paired.colors)
-plt.title('Top 10 Countries with Highest Confirmed Cases (Modified)')
+plt.title('Top 10 Countries with Highest Confirmed Cases ')
 plt.show()
+
 # Plotting stacked bar chart for 'Confirmed','Recovered', 'Deaths', 'Active' cases in US
 us_cases = merged_covcountry[merged_covcountry['Country/Region'] == 'US'].groupby('Country/Region')[['Confirmed','Recovered', 'Deaths', 'Active']].sum().reset_index()  # Define us_cases
 us_cases[['Confirmed','Recovered', 'Deaths', 'Active']].plot(kind='bar', stacked=True, figsize=(10, 6))
@@ -68,7 +69,7 @@ fig.show()
 
 # Plotting line chart for 'Confirmed', 'Deaths', 'Recovered', 'Active' cases over time globally
 fig = px.line(df_fgroup, x="Date", y=["Confirmed", "Deaths", "Recovered", "Active"], 
-              title='Analysis of Corona spread over time globally (Modified)', 
+              title='Analysis of Corona over time ', 
               color_discrete_sequence=px.colors.qualitative.Pastel)
 fig.show()
 
@@ -76,5 +77,5 @@ fig.show()
 who = df_country.groupby('WHO Region')[['Confirmed', 'Deaths', 'Recovered', 'Active']].sum().reset_index()
 fig = px.bar(who.sort_values('Confirmed'), x='Confirmed', y="WHO Region", color='WHO Region', 
              text='Confirmed', orientation='h', width=700, color_discrete_sequence=px.colors.sequential.Plasma)
-fig.update_layout(title='Confirmed Cases by WHO Region (Modified)', xaxis_title="", yaxis_title="", yaxis_categoryorder='total ascending')
+fig.update_layout(title='Confirmed The Region ', xaxis_title="", yaxis_title="", yaxis_categoryorder='total ascending')
 fig.show()
